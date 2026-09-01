@@ -12,6 +12,9 @@
     h2 { color: #E67E22; font-size: 20px; margin-top: 30px; }
     p, li { font-size: 15px; color: #d4d4d4; }
     ul { padding-left: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #333; color: #d4d4d4; }
+    th { color: #fff; font-weight: 700; }
     .muted { color: #9CA3AF; font-size: 13px; }
     .box { background: #1a1a1a; border: 1px solid #333; border-radius: 10px; padding: 16px 18px; margin-top: 24px; }
     a { color: #E10600; }
@@ -20,39 +23,55 @@
 <body>
   <div class="wrap">
     <h1>Política de Privacidad — MODO-GYM</h1>
-    <p class="muted">Última actualización: 28 de agosto de 2026</p>
+    <p class="muted">Última actualización: 31 de agosto de 2026</p>
     <p>Titular: MODO-GYM (gimnasio) — Dueña: Esther Acosta<br />Desarrollador: Ing. Ivan Teneta</p>
 
     <h2>1. Datos que recoge la app</h2>
-    <p>MODO-GYM funciona 100% local (offline-first). No envía datos a servidores propios.</p>
+    <p><strong>Guardados en tu dispositivo (local):</strong></p>
     <ul>
-      <li><strong>Datos de perfil que tú introduces:</strong> nombre, edad, sexo, estatura, peso, objetivo, días por semana, nombre del gym. Se guardan en el dispositivo.</li>
-      <li><strong>Progreso:</strong> historial de peso/altura/días para mostrar mejoras.</li>
-      <li><strong>Membresía y gastos:</strong> gym, plan, fechas, precio, gastos de insumos.</li>
-      <li><strong>Preferencias:</strong> idioma (ES/EN), país y estaciones de radio favoritas.</li>
+      <li><strong>Perfil:</strong> nombre, edad, sexo, estatura, peso, objetivo, días por semana, gym.</li>
+      <li><strong>Progreso:</strong> historial de peso/altura/días.</li>
+      <li><strong>Peso por ejercicio:</strong> kg, reps y series alzadas, para recomendarte subir carga.</li>
+      <li><strong>Membresía y gastos:</strong> plan, fechas, precio, gastos.</li>
+      <li><strong>Preferencias:</strong> idioma, país y estaciones de radio favoritas.</li>
     </ul>
-    <p><strong>No recoge:</strong> ubicación precisa, contactos, fotos, ni datos de pago externo.</p>
+    <p><strong>En la nube (solo la Tienda):</strong></p>
+    <ul>
+      <li>Productos del gimnasio (nombre, precio, stock, descripción y fotos) en <strong>Firebase Firestore</strong>.</li>
+      <li>Fotos de productos alojadas en <strong>ImgBB</strong>.</li>
+    </ul>
+    <p><strong>No recoge:</strong> ubicación precisa, contactos, datos de pago externo ni llamadas.</p>
 
     <h2>2. Cómo usa los datos</h2>
-    <p>Solo para personalizar rutinas, dieta, cálculo de IMC/calorías, recordatorios de vencimiento de membresía y reproducir la música que elijas. <strong>No se comparten con terceros ni se venden.</strong></p>
+    <p>Para personalizar rutinas, dieta, IMC, recordatorios y recomendar pesos. La tienda usa Firebase para el catálogo del gimnasio; las fotos se suben a ImgBB solo cuando la administradora las agrega. <strong>No se comparten con terceros ni se venden.</strong></p>
 
     <h2>3. Permisos</h2>
     <ul>
-      <li><strong>NOTIFICATIONS:</strong> para avisarte 7, 3, 1 y 0 días antes de que venza tu membresía (local, sin servidor).</li>
-      <li><strong>INTERNET:</strong> para descargar imágenes/GIFs de ejercicios y fotos de platos, y para la sección de <strong>Música</strong>, que consulta y reproduce <strong>emisoras de radio en vivo</strong> a través del servicio gratuito <strong>Radio Browser</strong> (api.radio-browser.info). Ese servicio recibe únicamente tu dirección IP para conectarte a la emisora; no enviamos tu perfil ni datos personales.</li>
+      <li><strong>NOTIFICATIONS:</strong> avisos de vencimiento y recordatorio de entrenar.</li>
+      <li><strong>INTERNET / fotos:</strong> descargar imágenes, reproducir radio y subir fotos de productos a ImgBB.</li>
+      <li><strong>Acceso a galería:</strong> solo cuando la administradora elige la imagen de un producto.</li>
     </ul>
 
-    <h2>4. Almacenamiento y seguridad</h2>
-    <p>Los datos se guardan localmente en el dispositivo. No hay backend propio. Si desinstalas la app, se borran.</p>
+    <h2>4. Servicios externos</h2>
+    <table>
+      <tr><th>Servicio</th><th>Uso</th><th>Qué comparte</th></tr>
+      <tr><td>Firebase Firestore</td><td>Catálogo de la tienda</td><td>Nombre, precio, stock, descripción y foto</td></tr>
+      <tr><td>ImgBB</td><td>Hospedaje de fotos</td><td>La imagen subida por la administradora</td></tr>
+      <tr><td>Radio Browser</td><td>Música en vivo</td><td>Solo tu dirección IP de conexión</td></tr>
+      <tr><td>TheMealDB / GitHub</td><td>Imágenes de alimentos y ejercicios</td><td>No envía datos personales</td></tr>
+    </table>
 
-    <h2>5. Derechos</h2>
-    <p>Puedes editar o borrar tu perfil/progreso en la app en cualquier momento. Para ejercer derechos, contacta al titular.</p>
+    <h2>5. Almacenamiento y seguridad</h2>
+    <p>Los datos personales se guardan localmente con <code>AsyncStorage</code>; si desinstalas la app se borran. Los datos de la tienda viven en la cuenta Firebase del gimnasio.</p>
 
-    <h2>6. Menores</h2>
+    <h2>6. Derechos</h2>
+    <p>Puedes editar o borrar tu perfil/progreso en Inicio &gt; Editar. Para ejercer derechos, contacta al titular.</p>
+
+    <h2>7. Menores</h2>
     <p>No dirigida a menores de 13 años sin supervisión.</p>
 
-    <h2>7. Cambios</h2>
-    <p>Cualquier cambio se publicará en esta URL y en la ficha de Play Store.</p>
+    <h2>8. Cambios</h2>
+    <p>Se publicarán en esta URL y en la ficha de Play Store.</p>
 
     <div class="box">
       <strong>Contacto:</strong> Ing. Ivan Teneta — ivansaenz482@gmail.com
